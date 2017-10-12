@@ -36,14 +36,8 @@ namespace BeforeAfter1
         }
         public void SetupLiveCameraStream()
         {
-            var imageView = new UIImageView(originalImage);
-            //var imageView = new UIImageView(UIImage.FromBundle("ToggleCameraButton.png"));
-            imageView.Frame = new CGRect(30, 100, 260, 200);
-            //         imagePicker.CameraOverlayView = imageView;
-            //draw = new DrawController();
-            View.AddSubview(imageView);
-            //      test.PaintSurface += Test_PaintSurface;
-
+            
+            
             captureSession = new AVCaptureSession();
 
             var viewLayer = liveCameraStream.Layer;
@@ -51,6 +45,11 @@ namespace BeforeAfter1
             {
                 Frame = this.View.Frame
             };
+            var imageView = new UIImageView(originalImage);
+            imageView.Alpha = .3f;
+            CGRect rect = liveCameraStream.Frame;
+            imageView.Frame = new CGRect(rect.X, rect.Y, rect.Width, rect.Height);
+            View.AddSubview(imageView);
             liveCameraStream.Layer.AddSublayer(videoPreviewLayer);
 
             var captureDevice = AVCaptureDevice.DefaultDeviceWithMediaType(AVMediaType.Video);

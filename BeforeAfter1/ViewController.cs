@@ -21,9 +21,9 @@ namespace BeforeAfter1
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            sliderContrast.ValueChanged += HandleValueChanged;
-            sliderSaturation.ValueChanged += HandleValueChanged;
-            sliderBrightness.ValueChanged += HandleValueChanged;
+            //sliderContrast.ValueChanged += HandleValueChanged;
+            //sliderSaturation.ValueChanged += HandleValueChanged;
+            //sliderBrightness.ValueChanged += HandleValueChanged;
             choosePhotoButton.TouchUpInside += (s, e) =>
             {
                 // create a new picker controller
@@ -57,11 +57,14 @@ namespace BeforeAfter1
             colorCtrls.Brightness = sliderBrightness.Value;
             colorCtrls.Saturation = sliderSaturation.Value;
             colorCtrls.Contrast = sliderContrast.Value;
+            
 
             using (var outputImage = colorCtrls.OutputImage)
             {
                 var result = context.CreateCGImage(outputImage, outputImage.Extent);
+                
                 imageView.Image = UIImage.FromImage(result);
+                imageView.Alpha = 0.05f;
             }
         }
 
@@ -99,6 +102,7 @@ namespace BeforeAfter1
                     // do something with the image
                     Console.WriteLine("got the original image");
                     imageView.Image = originalImage;
+                    imageView.Alpha = .3f;
                 }
 
                 // get the edited image
@@ -137,7 +141,7 @@ namespace BeforeAfter1
         public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
         {
             var destination = (Show)segue.DestinationViewController;
-            destination.originalImage = originalImage;
+            destination.originalImage = imageView.Image;
             //destination.DoSomething();
         }
 
