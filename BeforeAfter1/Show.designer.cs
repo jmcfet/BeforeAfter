@@ -18,6 +18,10 @@ namespace BeforeAfter1
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView liveCameraStream { get; set; }
 
+        [Action ("UIButton2218_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void UIButton2218_TouchUpInside (UIKit.UIButton sender);
+
         void ReleaseDesignerOutlets ()
         {
             if (liveCameraStream != null) {
