@@ -115,6 +115,9 @@
   <ItemGroup>
     <Content Include="Entitlements.plist" />
     <BundleResource Include="Resources\ToggleCameraButton.png" />
+    <BundleResource Include="Resources\FlashButton.png" />
+    <BundleResource Include="Resources\NoFlashButton.png" />
+    <BundleResource Include="Resources\TakePhotoButton.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

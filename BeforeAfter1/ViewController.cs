@@ -12,7 +12,7 @@ namespace BeforeAfter1
         UIImagePickerController imagePicker;
         UIImage originalImage;
         CIContext context;
-        CIColorControls colorCtrls; //CIFilter
+       
         
         public ViewController(IntPtr handle) : base(handle)
         {
@@ -44,29 +44,7 @@ namespace BeforeAfter1
 
             };
         }
-        void HandleValueChanged(object sender, EventArgs e)
-        {   // use the low-res version
-            if (colorCtrls == null)
-                colorCtrls = new CIColorControls() { Image = CIImage.FromCGImage(originalImage.CGImage) };
-            else
-                colorCtrls.Image = CIImage.FromCGImage(originalImage.CGImage);
-
-            if (context == null)
-                context = CIContext.FromOptions(null);
-
-            colorCtrls.Brightness = sliderBrightness.Value;
-            colorCtrls.Saturation = sliderSaturation.Value;
-            colorCtrls.Contrast = sliderContrast.Value;
-            
-
-            using (var outputImage = colorCtrls.OutputImage)
-            {
-                var result = context.CreateCGImage(outputImage, outputImage.Extent);
-                
-                imageView.Image = UIImage.FromImage(result);
-                imageView.Alpha = 0.05f;
-            }
-        }
+        
 
         protected void Handle_FinishedPickingMedia(object sender, UIImagePickerMediaPickedEventArgs e)
         {

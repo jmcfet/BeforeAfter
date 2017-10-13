@@ -49,7 +49,7 @@ namespace BeforeAfter1
             imageView.Alpha = .3f;
             CGRect rect = liveCameraStream.Frame;
             imageView.Frame = new CGRect(rect.X, rect.Y, rect.Width, rect.Height);
-            View.AddSubview(imageView);
+  //          View.AddSubview(imageView);
             liveCameraStream.Layer.AddSublayer(videoPreviewLayer);
 
             var captureDevice = AVCaptureDevice.DefaultDeviceWithMediaType(AVMediaType.Video);
@@ -90,6 +90,7 @@ namespace BeforeAfter1
             }
         }
 
+        
     }
 
 

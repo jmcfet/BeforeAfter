@@ -21,18 +21,6 @@ namespace BeforeAfter1
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIImageView imageView { get; set; }
 
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UISlider sliderBrightness { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UISlider sliderContrast { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UISlider sliderSaturation { get; set; }
-
         void ReleaseDesignerOutlets ()
         {
             if (choosePhotoButton != null) {
@@ -43,21 +31,6 @@ namespace BeforeAfter1
             if (imageView != null) {
                 imageView.Dispose ();
                 imageView = null;
-            }
-
-            if (sliderBrightness != null) {
-                sliderBrightness.Dispose ();
-                sliderBrightness = null;
-            }
-
-            if (sliderContrast != null) {
-                sliderContrast.Dispose ();
-                sliderContrast = null;
-            }
-
-            if (sliderSaturation != null) {
-                sliderSaturation.Dispose ();
-                sliderSaturation = null;
             }
         }
     }
