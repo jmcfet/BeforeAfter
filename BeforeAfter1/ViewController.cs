@@ -21,9 +21,7 @@ namespace BeforeAfter1
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            //sliderContrast.ValueChanged += HandleValueChanged;
-            //sliderSaturation.ValueChanged += HandleValueChanged;
-            //sliderBrightness.ValueChanged += HandleValueChanged;
+           
             choosePhotoButton.TouchUpInside += (s, e) =>
             {
                 // create a new picker controller

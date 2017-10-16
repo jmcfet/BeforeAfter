@@ -14,6 +14,7 @@ namespace BeforeAfter1
         AVCaptureStillImageOutput stillImageOutput;
         AVCaptureVideoPreviewLayer videoPreviewLayer;
         public UIImage originalImage;
+        UIImageView imageView;
         public Show (IntPtr handle) : base (handle)
         {
         }
@@ -21,7 +22,14 @@ namespace BeforeAfter1
         public override async void ViewDidLoad()
         {
             base.ViewDidLoad();
-
+            UIBarButtonItem[] items = new UIBarButtonItem[2];
+            items[0] = new UIBarButtonItem(UIBarButtonSystemItem.Add, (sender, args) => {
+                imageView.Alpha += .1f;
+            });
+            items[1] = new UIBarButtonItem(UIImage.FromFile("icons8-Minus-50.png") , UIBarButtonItemStyle.Plain, (sender, args) => {
+                imageView.Alpha -= .1f;
+            });
+            this.NavigationItem.SetRightBarButtonItems(items, true);
             await AuthorizeCameraUse();
             SetupLiveCameraStream();
         }
@@ -45,7 +53,7 @@ namespace BeforeAfter1
             {
                 Frame = this.View.Frame
             };
-            var imageView = new UIImageView(originalImage);
+            imageView = new UIImageView(originalImage);
             imageView.Alpha = .3f;
             CGRect rect = liveCameraStream.Frame;
             imageView.Frame = new CGRect(rect.X, rect.Y, rect.Width, rect.Height);
