@@ -47,15 +47,21 @@ namespace BeforeAfter1
             
             
             captureSession = new AVCaptureSession();
-
+         
             var viewLayer = liveCameraStream.Layer;
             videoPreviewLayer = new AVCaptureVideoPreviewLayer(captureSession)
             {
                 Frame = this.View.Frame
             };
             imageView = new UIImageView(originalImage);
+          // if needed scale the overlay image to fit in the frame of the view
+            imageView.ContentMode = UIViewContentMode.Center;
+            if (videoPreviewLayer.Frame.Width < originalImage.Size.Width && videoPreviewLayer.Frame.Height < originalImage.Size.Height)
+            {
+                imageView.ContentMode = UIViewContentMode.ScaleAspectFill;
+            }
             imageView.Alpha = .3f;
-            CGRect rect = liveCameraStream.Frame;
+            CGRect rect = this.View.Frame;
             imageView.Frame = new CGRect(rect.X, rect.Y, rect.Width, rect.Height);
             View.AddSubview(imageView);
             liveCameraStream.Layer.AddSublayer(videoPreviewLayer);
